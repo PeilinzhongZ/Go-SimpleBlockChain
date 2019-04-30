@@ -293,8 +293,8 @@ func StartHeartBeat() {
 			if err != nil {
 				// handle error
 			}
-			body := bytes.NewBuffer(heartBeatJSON)
 			for addr := range list {
+				body := bytes.NewBuffer(heartBeatJSON)
 				go func(addr string) {
 					_, err = http.Post(addr+"/heartbeat/receive", "application/json", body)
 					if err != nil {
